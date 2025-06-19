@@ -1,11 +1,14 @@
-const express = require("express");
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-app.get("/", (req, res) => {
-  res.send("✅ Clearweb Checkout API is live!");
-});
-
-app.listen(PORT, () => {
-  console.log(`🚀 Server is running on port ${PORT}`);
-});// Your Stripe checkout logic will go here
+{
+  "name": "checkout-clearweb",
+  "version": "1.0.0",
+  "description": "API for Clearweb dynamic Stripe checkout",
+  "main": "checkout.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node checkout.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "stripe": "^12.0.0"
+  }
+}
