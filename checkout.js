@@ -31,8 +31,28 @@ const prices = {
 // Checkout-Route
 app.get('/', async (req, res) => {
   let { pkg, addons } = req.query;
+
+// Mapping für Pakete
+const pkgMap = {
+  'choose start': 'start',
+  'choose plus': 'plus',
+  'choose premium': 'premium',
+};
 if (typeof pkg === 'object' && pkg.pkg) pkg = pkg.pkg;
-  const selectedAddons = Array.isArray(addons) ? addons : JSON.parse(addons || '[]');
+pkg = pkgMap[pkg] || pkg;
+
+// Mapping für Add-ons
+const addonMap = {
+  'extra page': 'extraPage',
+  'express delivery': 'express',
+  'cms integration': 'cms',
+  '30-day support': 'support',
+  'image optimization': 'image',
+  'seo text': 'seo',
+};
+
+const selectedAddons = (Array.isArray(addons) ? addons : JSON.parse(addons || '[]'))
+  .map(addon => addonMap[addon] || addon);
 
   try {
     const line_items = [];
