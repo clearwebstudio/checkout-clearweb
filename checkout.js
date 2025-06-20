@@ -17,15 +17,15 @@ app.use(express.urlencoded({ extended: true }));
 
 // Preisliste (aus Webflow)
 const prices = {
-  start: 'prod_SWpQ3x019FymNW',
-  plus: 'prod_SWpRlpLot42dri',
-  premium: 'prod_SWpSxdUKF7mKKi',
-  seo: 'prod_SWpTdzlGxddS01',
-  page: 'prod_SWpUcNxXb48nVn',
-  cms: 'prod_SWpV9aAIgVO1tA',
-  support: 'prod_SWpYTgTLL7ta1U',
-  image: 'prod_SWpZ4sFFa1Pzng',
-  express: 'prod_SWpXyx5Ic6bL5a'
+  start: 'price_1RbllhDEGiMYKyReY5nkD4AA',
+  plus: 'price_1RblmsDEGiMYKyRej80n3H4k',
+  premium: 'price_1RblnQDEGiMYKyRexqHOs009',
+  seo: 'price_1RblotDEGiMYKyReoyQ82udf',
+  page: 'price_1RblpfDEGiMYKyReTY5EgI3h',
+  cms: 'price_1RblqpDEGiMYKyReAs8t85pi',
+  support: 'price_1RbltJDEGiMYKyReAUv0TXnD',
+  image: 'price_1RbluoDEGiMYKyReH9fommXO',
+  express: 'price_1RblsSDEGiMYKyRe5Sb4tEWL'
 };
 
 // Checkout-Route
