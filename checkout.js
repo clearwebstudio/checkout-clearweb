@@ -4,7 +4,7 @@ import cors from 'cors';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-console.log("Stripe-Key beginnt mit:", process.env.STRIPE_SECRET_KEY?.slice(0, 10));
+console.log("Stripe-Key beginnt mit:", process.env.STRIPE_SECRET_KEY2?.slice(0, 10));
 console.log('Stripe Key:', process.env.STRIPE_SECRET_KEY ? '✅ Loaded' : '❌ Missing');
 
  // deinen Live-Key hier einfügen
