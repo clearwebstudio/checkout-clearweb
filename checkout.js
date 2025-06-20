@@ -30,7 +30,8 @@ const prices = {
 
 // Checkout-Route
 app.get('/', async (req, res) => {
-  const { pkg, addons } = req.query;
+  let { pkg, addons } = req.query;
+if (typeof pkg === 'object' && pkg.pkg) pkg = pkg.pkg;
   const selectedAddons = Array.isArray(addons) ? addons : JSON.parse(addons || '[]');
 
   try {
