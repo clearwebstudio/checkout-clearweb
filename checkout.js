@@ -44,9 +44,9 @@ app.get('/', async (req, res) => {
       const id = prices[addon];
       if (id) line_items.push({ price: id, quantity: 1 });
     });
-console.log('→ Paket:', pkg);
-  console.log('→ Add-ons:', selectedAddons);
-  console.log('→ Line Items:', line_items);
+console.log('📦 Paket:', pkg);
+console.log('➕ Add-ons:', selectedAddons);
+console.log('🧾 Line Items:', line_items);
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       line_items,
