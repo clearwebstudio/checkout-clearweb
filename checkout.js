@@ -4,7 +4,8 @@ import cors from 'cors';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const stripe = new Stripe('sk_live_...dein_secret_key...'); // deinen Live-Key hier einfügen
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+ // deinen Live-Key hier einfügen
 
 app.use(cors());
 app.use(express.json());
