@@ -92,17 +92,6 @@ try {
   console.error(err);
   res.status(500).send('Error creating Stripe session');
 }
-     mode: 'payment',
-      line_items,
-      success_url: 'https://clearweb.studio/success',
-      cancel_url: 'https://clearweb.studio/#cancel',
-    });
-
-    res.redirect(303, session.url);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Error creating Stripe session');
-  }
 });
 
 app.listen(PORT, () => {
