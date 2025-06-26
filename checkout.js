@@ -68,8 +68,9 @@ const selectedAddons = (Array.isArray(addons) ? addons : JSON.parse(addons || '[
 console.log('📦 Paket:', pkg);
 console.log('➕ Add-ons:', selectedAddons);
 console.log('🧾 Line Items:', line_items);
-    const session = await stripe.checkout.sessions.create({
-      mode: 'payment',
+ console.log('✅ Final Line Items:', line_items);
+   const session = await stripe.checkout.sessions.create({
+     mode: 'payment',
       line_items,
       success_url: 'https://clearweb.studio/success',
       cancel_url: 'https://clearweb.studio/#cancel',
