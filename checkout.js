@@ -51,7 +51,6 @@ const addonMap = {
   'seo text': 'seo',
 };
 
-const selectedAddons = (Array.isArray(addons) ? addons : JSON.parse(addons || '[]'))
  const selectedAddons = (Array.isArray(addons) ? addons : JSON.parse(addons || '[]'))
   .map(addon => addonMap[addon] || addon);
 
