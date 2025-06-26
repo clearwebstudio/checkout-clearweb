@@ -52,24 +52,47 @@ const addonMap = {
 };
 
 const selectedAddons = (Array.isArray(addons) ? addons : JSON.parse(addons || '[]'))
+ const selectedAddons = (Array.isArray(addons) ? addons : JSON.parse(addons || '[]'))
   .map(addon => addonMap[addon] || addon);
 
-  try {
-    const line_items = [];
+try {
+  const line_items = [];
 
-    if (pkg && prices[pkg]) {
-      line_items.push({ price: prices[pkg], quantity: 1 });
+  console.log('📦 Paket (roh):', pkg);
+  console.log('🧩 Add-ons (roh):', addons);
+  console.log('🧩 Add-ons (gemappt):', selectedAddons);
+
+  if (pkg && prices[pkg]) {
+    console.log('✅ Hauptpaket gefunden:', pkg, '→', prices[pkg]);
+    line_items.push({ price: prices[pkg], quantity: 1 });
+  } else {
+    console.log('❌ Kein gültiges Paket gefunden:', pkg);
+  }
+
+  selectedAddons.forEach(addon => {
+    const id = prices[addon];
+    if (id) {
+      console.log('✅ Add-on gefunden:', addon, '→', id);
+      line_items.push({ price: id, quantity: 1 });
+    } else {
+      console.log('❌ Add-on NICHT gefunden:', addon);
     }
+  });
 
-    selectedAddons.forEach(addon => {
-      const id = prices[addon];
-      if (id) line_items.push({ price: id, quantity: 1 });
-    });
-console.log('📦 Paket:', pkg);
-console.log('➕ Add-ons:', selectedAddons);
-console.log('🧾 Line Items:', line_items);
- console.log('✅ Final Line Items:', line_items);
-   const session = await stripe.checkout.sessions.create({
+  console.log('✅ Final Line Items:', line_items);
+
+  const session = await stripe.checkout.sessions.create({
+    mode: 'payment',
+    line_items,
+    success_url: 'https://clearweb.studio/success',
+    cancel_url: 'https://clearweb.studio/#cancel',
+  });
+
+  res.redirect(303, session.url);
+} catch (err) {
+  console.error(err);
+  res.status(500).send('Error creating Stripe session');
+}
      mode: 'payment',
       line_items,
       success_url: 'https://clearweb.studio/success',
