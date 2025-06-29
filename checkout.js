@@ -30,8 +30,8 @@ const prices = {
 
 // Checkout-Route
 app.post('/', async (req, res) => {
-  let { pkg, addons } = req.query;
- console.log('📥 Eingehende Query:', req.query);
+ let { pkg, addons } = req.body;
+console.log('📥 Eingehender Body:', req.body);
 
 // Mapping für Pakete
 const pkgMap = {
